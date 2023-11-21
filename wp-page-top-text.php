@@ -3,7 +3,7 @@
 /**
  * Plugin Name: WP Page Top Text
  * Description: Adds custom text above pages with Customizer section to customize text.
- * Version: 1.0
+ * Version: 1.0.0
  * Author: Daryl Malibiran
  * Author URI: https://malibiran.com
  */
