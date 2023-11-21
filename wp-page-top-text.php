@@ -18,7 +18,7 @@
 
     $text = get_theme_mod( 'wp_page_top_text' );
   
-    echo '<div class="wp-page-top-text" style="text-align: center; color: ' . get_theme_mod( 'wp_page_top_text_color' ) . '; background-color:' . get_theme_mod( 'wp_page_top_text_bg_color' ) . ';">' . esc_html( $text ) . '</div>';
+    echo '<div class="wp-page-top-text" style="text-align: center; color: ' . esc_attr(get_theme_mod( 'wp_page_top_text_color' )) . '; background-color:' . esc_attr(get_theme_mod( 'wp_page_top_text_bg_color' )) . ';">' . esc_html( $text ) . '</div>';
   
   }
   add_action( 'wp_body_open', 'wp_page_top_text' );
@@ -31,13 +31,17 @@
     ) );
   
     $wp_customize->add_setting( 'wp_page_top_text', array(
-      'default' => __( 'Welcome to our site!', 'wp-page-top-text' ) 
+      'default' => __( 'Welcome to our site!', 'wp-page-top-text' ),
+      'sanitize_callback' => 'sanitize_textarea_field'
     ) );
   
     $wp_customize->add_control( 'wp_page_top_text', array(
       'label' => __( 'Page Top Text', 'wp-page-top-text' ),
       'section' => 'wp_page_top_text',
-      'type' => 'textarea'
+      'type' => 'textarea',
+      'input_attrs' => array(
+        'maxlength' => 70
+     )
     ) );
 
     $wp_customize->add_setting( 'wp_page_top_text_bg_color', array(
