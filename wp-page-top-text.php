@@ -3,7 +3,7 @@
 /**
  * Plugin Name: WP Page Top Text
  * Description: Adds custom text above pages with Customizer section to customize text.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: Daryl Malibiran
  * Author URI: https://malibiran.com
  */
@@ -19,7 +19,7 @@
              (!empty($text_color) ? 'color: ' . esc_attr($text_color) . ';' : '') .  
              (!empty($background_color) ? 'background-color: ' . esc_attr($background_color) . ';' : '');  
  
-   echo '<div class="wp-page-top-text" style="' . $style . '">' . esc_html($text) . '</div>';
+   echo (!empty($text) ? '<div class="wp-page-top-text" style="' . $style . '">' . esc_html($text) . '</div>' : "");
  }
 add_action('wp_body_open', 'wp_page_top_text');
 
@@ -32,7 +32,6 @@ function wp_page_top_text_customizer($wp_customize)
   ));
 
   $wp_customize->add_setting('wp_page_top_text', array(
-    'default' => __('Welcome to our site!', 'wp-page-top-text'),
     'sanitize_callback' => 'sanitize_textarea_field'
   ));
 
@@ -45,18 +44,14 @@ function wp_page_top_text_customizer($wp_customize)
     )
   ));
 
-  $wp_customize->add_setting('wp_page_top_text_bg_color', array(
-    'default' => '#ffffff',
-  ));
+  $wp_customize->add_setting('wp_page_top_text_bg_color');
 
   $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'wp_page_top_text_bg_color', array(
     'label' => __('Background Color', 'wp-page-top-text'),
     'section' => 'wp_page_top_text',
   )));
 
-  $wp_customize->add_setting('wp_page_top_text_color', array(
-    'default' => '#000000',
-  ));
+  $wp_customize->add_setting('wp_page_top_text_color');
 
   $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'wp_page_top_text_color', array(
     'label' => __('Text Color', 'wp-page-top-text'),
