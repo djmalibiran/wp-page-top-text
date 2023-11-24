@@ -3,18 +3,24 @@
 /**
  * Plugin Name: WP Page Top Text
  * Description: Adds custom text above pages with Customizer section to customize text.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Daryl Malibiran
  * Author URI: https://malibiran.com
  */
 
-function wp_page_top_text()
-{
-
-  $text = get_theme_mod('wp_page_top_text');
-
-  echo '<div class="wp-page-top-text" style="text-align: center; color: ' . esc_attr(get_theme_mod('wp_page_top_text_color')) . '; background-color:' . esc_attr(get_theme_mod('wp_page_top_text_bg_color')) . ';">' . esc_html($text) . '</div>';
-}
+ function wp_page_top_text()
+ {
+ 
+   $text = get_theme_mod('wp_page_top_text');
+   $text_color = sanitize_hex_color(get_theme_mod('wp_page_top_text_color'));
+   $background_color = sanitize_hex_color(get_theme_mod('wp_page_top_text_bg_color'));
+ 
+   $style = 'text-align: center;' . 
+             (!empty($text_color) ? 'color: ' . esc_attr($text_color) . ';' : '') .  
+             (!empty($background_color) ? 'background-color: ' . esc_attr($background_color) . ';' : '');  
+ 
+   echo '<div class="wp-page-top-text" style="' . $style . '">' . esc_html($text) . '</div>';
+ }
 add_action('wp_body_open', 'wp_page_top_text');
 
 function wp_page_top_text_customizer($wp_customize)
