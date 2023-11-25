@@ -1,8 +1,13 @@
 <?php
 // If uninstall not called from WordPress, then exit
 if ( !defined( 'WP_UNINSTALL_PLUGIN' ) ) {
-    exit;
+    die;
 }
 
-// Call registered uninstall hook  
-wp_page_top_text_uninstall();
+// Delete options
+delete_option('wp_page_top_text');
+delete_option('wp_page_top_text_bg_color'); 
+delete_option('wp_page_top_text_color');
+
+// Clear caches
+wp_cache_flush();
