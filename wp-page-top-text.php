@@ -19,24 +19,6 @@ function wp_page_top_text() {
 }
 add_action('wp_body_open', 'wp_page_top_text');
 
-// Function to add default options upon plugin activation
-function wp_page_top_text_activate() {
-    // Add default options if they don't exist
-    add_option('wp_page_top_text', '');
-    add_option('wp_page_top_text_bg_color', '');
-    add_option('wp_page_top_text_color', '');
-}
-register_activation_hook(__FILE__, 'wp_page_top_text_activate');
-
-// Function to remove plugin data when uninstalled
-function wp_page_top_text_uninstall() {
-    // Remove options created by the plugin
-    delete_option('wp_page_top_text');
-    delete_option('wp_page_top_text_bg_color');
-    delete_option('wp_page_top_text_color');
-}
-register_uninstall_hook(__FILE__, 'wp_page_top_text_uninstall');
-
 // Customizer settings
 function wp_page_top_text_customizer($wp_customize) {
     $wp_customize->add_section('wp_page_top_text', array(
