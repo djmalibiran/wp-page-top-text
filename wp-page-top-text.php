@@ -8,6 +8,10 @@
  * Author URI: https://malibiran.com
  */
 
+// Register uninstall hook  
+register_uninstall_hook( __FILE__, 'wp_page_top_text_uninstall');
+
+//  Function to display the text to the top of every pages
  function wp_page_top_text()
  {
  
@@ -23,6 +27,7 @@
  }
 add_action('wp_body_open', 'wp_page_top_text');
 
+// Function to add entry to WP Customizer (Dashboard > Appearance > Customize > Page Top Text)
 function wp_page_top_text_customizer($wp_customize)
 {
 
@@ -59,3 +64,16 @@ function wp_page_top_text_customizer($wp_customize)
   )));
 }
 add_action('customize_register', 'wp_page_top_text_customizer');
+
+// Uninstall function
+function wp_page_top_text_uninstall() {
+
+  // Delete options
+  delete_option('wp_page_top_text');
+  delete_option('wp_page_top_text_bg_color'); 
+  delete_option('wp_page_top_text_color');
+
+  // Clear caches
+  wp_cache_flush();
+
+}
