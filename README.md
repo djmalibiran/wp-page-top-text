@@ -24,7 +24,7 @@ The output is added via the wp_body_open hook. Text and color values are properl
 This plugin makes customizing a global site-wide text block simple and easy. Great for notifications, announcements, or general text.
 
 ## How to Install?
-Download the code as zip file and install it on your WordPress site. The default welcome text will automatically be added to every page.
+Download the plugin as zip file and install it on your WordPress site.
 
 ## Change Text
  To change the text, text color, and background color, go to Dashboard > Appearance > Customize > Page Top Text. Customize the settings and click save changes.
