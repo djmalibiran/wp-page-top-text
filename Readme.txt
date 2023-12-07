@@ -1,4 +1,4 @@
-=== WP Page Top Text ===
+=== Page Top Text ===
 Contributors: darylmalibiran, darell1130
 Donate link: https://www.paypal.com/paypalme/DarylMalibiran
 Tags: announcement, notification, banner, bar, top
@@ -47,7 +47,7 @@ To change the text, text color, and background color, go to Dashboard > Appearan
 
 == Screenshots ==
 
-1. Live preview of WP Page Top Text settings on Customizer page.
+1. Live preview of Page Top Text settings on Customizer page.
 
 == Changelog ==
 

@@ -1,4 +1,4 @@
-# WP Page Top Text
+# Page Top Text
 A simple WordPress plugin that adds a customizable text area above all pages.
 
 ## Description
